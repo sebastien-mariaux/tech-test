@@ -46,3 +46,10 @@ Each item of an order is represented as an instance of the `Item` class.
 - `rubocop` for code style
 
 
+## Specs
+
+Challenge's requirements are tested in spec/receipt_generator_spec.rb, specifically:
+
+- spec/receipt_generator_spec.rb:32
+- spec/receipt_generator_spec.rb:70
+- spec/receipt_generator_spec.rb:116
