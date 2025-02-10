@@ -13,7 +13,7 @@ class ReceiptGenerator
     end
     content << "Sales Taxes: #{format_price(total_tax)}"
     content << "Total: #{format_price(total_amount)}"
-    content.join("\n")
+    content.join("\n") + "\n"
   end
 
   def total_tax
