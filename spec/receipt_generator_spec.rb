@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 require 'rspec'
+require_relative '../models/item'
+require_relative '../receipt_generator'
 
 # books, food, and medical products that are exempt of tax.
 
@@ -27,8 +29,18 @@ RSpec.describe 'Challenge' do
       TEXT
     end
 
-    it 'should return the correct output' do
+    it 'returns the correct output' do
       expect(ReceiptGenerator.new(input).call).to eq(output)
+    end
+
+    it 'computes the total tax' do
+      generator = ReceiptGenerator.new(input)
+      expect(generator.total_tax).to eq(1.50)
+    end
+
+    it 'computes the total amount' do
+      generator = ReceiptGenerator.new(input)
+      expect(generator.total_amount).to eq(42.32)
     end
   end
 
@@ -55,8 +67,18 @@ RSpec.describe 'Challenge' do
       TEXT
     end
 
-    it 'should return the correct output' do
+    it 'returns the correct output' do
       expect(ReceiptGenerator.new(input).call).to eq(output)
+    end
+
+    it 'computes the total tax' do
+      generator = ReceiptGenerator.new(input)
+      expect(generator.total_tax).to eq(7.65)
+    end
+
+    it 'computes the total amount' do
+      generator = ReceiptGenerator.new(input)
+      expect(generator.total_amount).to eq(65.15)
     end
   end
 
@@ -91,8 +113,18 @@ RSpec.describe 'Challenge' do
       TEXT
     end
 
-    it 'should return the correct output' do
+    it 'returns the correct output' do
       expect(ReceiptGenerator.new(input).call).to eq(output)
+    end
+
+    it 'computes the total tax' do
+      generator = ReceiptGenerator.new(input)
+      expect(generator.total_tax).to eq(7.90)
+    end
+
+    it 'computes the total amount' do
+      generator = ReceiptGenerator.new(input)
+      expect(generator.total_amount).to eq(98.38)
     end
   end
 end
