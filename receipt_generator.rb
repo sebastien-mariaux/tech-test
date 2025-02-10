@@ -9,12 +9,8 @@ class ReceiptGenerator
   end
 
   def call
-    content = @input.map do |item, quantity|
-      "#{quantity} #{item.name}: #{format_price(line_price(item, quantity))}"
-    end
-    content << "Sales Taxes: #{format_price(total_tax)}"
-    content << "Total: #{format_price(total_amount)}"
-    "#{content.join("\n")}\n"
+    content = [items_lines, sales_taxes_line, total_line].join("\n")
+    "#{content}\n"
   end
 
   def total_tax
@@ -26,6 +22,24 @@ class ReceiptGenerator
   end
 
   private
+
+  def items_lines
+    @input.map do |item, quantity|
+      item_line(item, quantity)
+    end
+  end
+
+  def item_line(item, quantity)
+    "#{quantity} #{item.name}: #{format_price(line_price(item, quantity))}"
+  end
+
+  def sales_taxes_line
+    "Sales Taxes: #{format_price(total_tax)}"
+  end
+
+  def total_line
+    "Total: #{format_price(total_amount)}"
+  end
 
   def total_amount_before_tax
     @input.sum { |item, quantity| item.price * quantity }
