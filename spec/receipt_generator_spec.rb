@@ -2,7 +2,7 @@
 
 require 'rspec'
 require_relative '../models/item'
-require_relative '../receipt_generator'
+require_relative '../services/receipt_generator'
 
 # books, food, and medical products that are exempt of tax.
 

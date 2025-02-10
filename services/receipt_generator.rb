@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative 'helpers'
+require_relative '../helpers'
 
 # Accepts of list of items and their quantities and generates a receipt
 class ReceiptGenerator
