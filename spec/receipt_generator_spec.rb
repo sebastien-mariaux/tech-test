@@ -30,7 +30,6 @@ RSpec.describe 'Challenge' do
     end
 
     it 'returns the correct output' do
-      puts ReceiptGenerator.new(input).call
       expect(ReceiptGenerator.new(input).call).to eq(output)
     end
 

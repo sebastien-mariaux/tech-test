@@ -1,4 +1,8 @@
+# frozen_string_literal: true
+
 require 'rspec'
+require_relative '../services/purchase_processor'
+require_relative '../services/receipt_generator'
 
 RSpec.describe 'PurchaseProcessor' do
   context 'with a valid input file' do
