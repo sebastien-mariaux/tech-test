@@ -2,18 +2,19 @@
 
 require_relative 'helpers'
 
+# Accepts of list of items and their quantities and generates a receipt
 class ReceiptGenerator
   def initialize(input)
     @input = input
   end
 
   def call
-   content =  @input.map do |item, quantity|
+    content = @input.map do |item, quantity|
       "#{quantity} #{item.name}: #{format_price(line_price(item, quantity))}"
     end
     content << "Sales Taxes: #{format_price(total_tax)}"
     content << "Total: #{format_price(total_amount)}"
-    content.join("\n") + "\n"
+    "#{content.join("\n")}\n"
   end
 
   def total_tax
@@ -31,6 +32,6 @@ class ReceiptGenerator
   end
 
   def line_price(item, quantity)
-    item.price * quantity + item.tax * quantity
+    (item.price * quantity) + (item.tax * quantity)
   end
 end

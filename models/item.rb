@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Define an item with a name, price, imported, and tax_exempt
 class Item
   attr_reader :name, :price, :imported, :tax_exempt
 
