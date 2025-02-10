@@ -9,7 +9,7 @@ require_relative '../receipt_generator'
 RSpec.describe 'Challenge' do
   context 'example input 1' do
     let(:book) { Item.new(name: 'book', price: 12.49, imported: false, tax_exempt: true) }
-    let(:music_cd) { Item.new(name: 'music cd', price: 14.99, imported: false, tax_exempt: false) }
+    let(:music_cd) { Item.new(name: 'music CD', price: 14.99, imported: false, tax_exempt: false) }
     let(:chocolate_bar) { Item.new(name: 'chocolate bar', price: 0.85, imported: false, tax_exempt: true) }
     let(:input) do
       {
@@ -30,6 +30,7 @@ RSpec.describe 'Challenge' do
     end
 
     it 'returns the correct output' do
+      puts ReceiptGenerator.new(input).call
       expect(ReceiptGenerator.new(input).call).to eq(output)
     end
 

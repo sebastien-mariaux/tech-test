@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative 'helpers'
+
 class ReceiptGenerator
   def initialize(input)
     @input = input
@@ -7,10 +9,10 @@ class ReceiptGenerator
 
   def call
    content =  @input.map do |item, quantity|
-      "#{quantity} #{item.name}: #{line_price(item, quantity)}"
+      "#{quantity} #{item.name}: #{format_price(line_price(item, quantity))}"
     end
-    content << "Sales Taxes: #{total_tax}"
-    content << "Total: #{total_amount}"
+    content << "Sales Taxes: #{format_price(total_tax)}"
+    content << "Total: #{format_price(total_amount)}"
     content.join("\n")
   end
 
@@ -31,5 +33,4 @@ class ReceiptGenerator
   def line_price(item, quantity)
     item.price * quantity + item.tax * quantity
   end
-
 end
