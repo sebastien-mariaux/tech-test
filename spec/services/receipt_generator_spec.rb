@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 require 'rspec'
-require_relative '../models/item'
-require_relative '../services/receipt_generator'
+require_relative '../../models/item'
+require_relative '../../services/receipt_generator'
 
 # books, food, and medical products that are exempt of tax.
 
