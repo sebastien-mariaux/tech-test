@@ -1,4 +1,5 @@
 require 'rspec'
+require_relative '../models/item'
 
 RSpec.describe 'Item' do
   it 'should be initialized with a name, price, imported, and exempt' do
