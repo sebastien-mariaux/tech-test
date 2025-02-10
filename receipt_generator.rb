@@ -5,7 +5,14 @@ class ReceiptGenerator
     @input = input
   end
 
-  def call; end
+  def call
+   content =  @input.map do |item, quantity|
+      "#{quantity} #{item.name}: #{line_price(item, quantity)}"
+    end
+    content << "Sales Taxes: #{total_tax}"
+    content << "Total: #{total_amount}"
+    content.join("\n")
+  end
 
   def total_tax
     @input.sum { |item, quantity| item.tax * quantity }
@@ -20,4 +27,9 @@ class ReceiptGenerator
   def total_amount_before_tax
     @input.sum { |item, quantity| item.price * quantity }
   end
+
+  def line_price(item, quantity)
+    item.price * quantity + item.tax * quantity
+  end
+
 end
