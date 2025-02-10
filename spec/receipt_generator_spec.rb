@@ -2,14 +2,19 @@
 
 require 'rspec'
 
+# books, food, and medical products that are exempt of tax.
+
 RSpec.describe 'Challenge' do
   context 'example input 1' do
+    let(:book) { Item.new(name: 'book', price: 12.49, imported: false, tax_exempt: true) }
+    let(:music_cd) { Item.new(name: 'music cd', price: 14.99, imported: false, tax_exempt: false) }
+    let(:chocolate_bar) { Item.new(name: 'chocolate bar', price: 0.85, imported: false, tax_exempt: true) }
     let(:input) do
-      <<~TEXT
-        2 book at 12.49
-        1 music CD at 14.99
-        1 chocolate bar at 0.85
-      TEXT
+      {
+        book => 2,
+        music_cd => 1,
+        chocolate_bar => 1
+      }
     end
 
     let(:output) do
@@ -28,12 +33,18 @@ RSpec.describe 'Challenge' do
   end
 
   context 'example input 2' do
+    let(:imported_box_of_chocolates) do
+      Item.new(name: 'imported box of chocolates', price: 10.00, imported: true, tax_exempt: true)
+    end
+    let(:imported_bottle_of_perfume) do
+      Item.new(name: 'imported bottle of perfume', price: 47.50, imported: true, tax_exempt: false)
+    end
     let(:input) do
-      <<~TEXT
-        1 imported box of chocolates at 10.00
-        1 imported bottle of perfume at 47.50
-      TEXT
-  end
+      {
+        imported_box_of_chocolates => 1,
+        imported_bottle_of_perfume => 1
+      }
+    end
 
     let(:output) do
       <<~TEXT
@@ -47,17 +58,26 @@ RSpec.describe 'Challenge' do
     it 'should return the correct output' do
       expect(ReceiptGenerator.new(input).call).to eq(output)
     end
-
   end
 
   context 'example input 3' do
+    let(:imported_bottle_of_perfume) do
+      Item.new(name: 'imported bottle of perfume', price: 27.99, imported: true, tax_exempt: false)
+    end
+    let(:bottle_of_perfume) { Item.new(name: 'bottle of perfume', price: 18.99, imported: false, tax_exempt: false) }
+    let(:packet_of_headache_pills) do
+      Item.new(name: 'packet of headache pills', price: 9.75, imported: false, tax_exempt: true)
+    end
+    let(:imported_boxes_of_chocolates) do
+      Item.new(name: 'imported boxes of chocolates', price: 11.25, imported: true, tax_exempt: true)
+    end
     let(:input) do
-      <<~TEXT
-        1 imported bottle of perfume at 27.99
-        1 bottle of perfume at 18.99
-        1 packet of headache pills at 9.75
-        3 imported boxes of chocolates at 11.25
-      TEXT
+      {
+        imported_bottle_of_perfume => 1,
+        bottle_of_perfume => 1,
+        packet_of_headache_pills => 1,
+        imported_boxes_of_chocolates => 3
+      }
     end
 
     let(:output) do
