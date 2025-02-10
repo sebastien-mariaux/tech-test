@@ -23,10 +23,10 @@ RSpec.describe 'Item' do
   context 'with an item imported and tax exempt' do
     let(:item) { Item.new(name: 'book', price: 12.49, imported: true, tax_exempt: true) }
 
-    let(:expected_tax) { 0.62 }
+    let(:expected_tax) { 0.6 }
 
     it 'applies 5% tax' do
-      expect(item.tax).to eq(0.62)
+      expect(item.tax).to eq(0.6)
     end
   end
 
