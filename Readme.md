@@ -53,3 +53,6 @@ Challenge's requirements are tested in spec/receipt_generator_spec.rb, specifica
 - spec/services/receipt_generator_spec.rb:32
 - spec/services/receipt_generator_spec.rb:70
 - spec/services/receipt_generator_spec.rb:116
+
+## Screenshot
+![image](https://github.com/user-attachments/assets/f02cd66c-5638-4d61-9683-08eb6f012d1f)
