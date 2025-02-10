@@ -2,7 +2,7 @@
 
 require 'json'
 require_relative '../models/item'
-
+require_relative '../services/receipt_generator'
 # Accepts a file path to a JSON file containing purchase data and returns an array of receipts
 class PurchaseProcessor
   def initialize(file_path)
